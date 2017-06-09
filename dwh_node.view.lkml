@@ -1,8 +1,10 @@
 view: dwh_node {
   derived_table: {
     sql:
-    select distinct n.* from dwh_node n
+    select distinct n.*, f.fixturetype as fixture_fixturetype from dwh_node n
     JOIN   dwh_aggregation_energy_savings_node e ON e.nodeid = n.nodeid
+    JOIN   dwh_energy_settings es ON es.nodeid = e.nodeid
+    JOIN   dwh_fixture f ON f.fixtureid = es.fixtureid
     where  e.startday >= date_format(date_add('day',-3,current_date),'%Y-%m-%d')
     ;;
   }
@@ -187,6 +189,11 @@ view: dwh_node {
   dimension: time_zone {
     type: string
     sql: ${TABLE}.time_zone ;;
+  }
+
+  dimension: fixture_fixturetype {
+    type: string
+    sql: ${TABLE}.fixture_fixturetype ;;
   }
 
   measure: count {
