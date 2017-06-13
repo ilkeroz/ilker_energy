@@ -2,7 +2,7 @@ view: dwh_aggregation_energy_savings_node {
   derived_table: {
     sql:
     select * from dwh_aggregation_energy_savings_node
-    where  startday >= date_format(date_add('day',-37,current_date),'%Y-%m-%d')
+    where  startday >= date_format(date_add('day',-50,current_date),'%Y-%m-%d')
     ;;
   }
 
