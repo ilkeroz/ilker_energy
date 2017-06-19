@@ -3,7 +3,7 @@ view: dwh_site {
     sql:
     select distinct s.* from dwh_site s
     JOIN   dwh_aggregation_energy_savings_node n ON n.siteid = s.siteid
-    where  n.startday >= date_format(date_add('day',-3,current_date),'%Y-%m-%d')
+    where  n.startday >= date_format(date_add('day',-33,current_date),'%Y-%m-%d')
     ;;
   }
 
