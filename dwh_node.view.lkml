@@ -3,7 +3,7 @@ view: dwh_node {
     sql:
     select n.*, g.groupname as groupname, f.fixturetype as fixture_fixturetype
     from   dwh_node n
-    JOIN   dwh_nodegroups g ON n.nodeid = g.nodeid
+    LEFT OUTER JOIN   dwh_nodegroups g ON n.nodeid = g.nodeid
     JOIN   dwh_energy_settings es ON n.nodeid = es.nodeid
     JOIN   dwh_fixture f ON f.fixtureid = es.fixtureid
     where  g.grouptype = 'Lighting'
