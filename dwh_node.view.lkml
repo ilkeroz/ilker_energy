@@ -6,7 +6,7 @@ view: dwh_node {
     LEFT OUTER JOIN   dwh_nodegroups g ON n.nodeid = g.nodeid
     JOIN   dwh_energy_settings es ON n.nodeid = es.nodeid
     JOIN   dwh_fixture f ON f.fixtureid = es.fixtureid
-    where  g.grouptype = 'Lighting'
+    where  (g.grouptype = 'Lighting' or g.grouptype is null)
     ;;
   }
 
