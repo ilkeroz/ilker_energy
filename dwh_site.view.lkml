@@ -2,9 +2,10 @@ view: dwh_site {
   derived_table: {
     sql:
     select distinct s.* from dwh_site s
-    JOIN   dwh_aggregation_energy_savings_node n ON n.siteid = s.siteid
-    where  n.startday >= date_format(date_add('day',-2,current_date),'%Y-%m-%d')
-    and    s.name = 'KCMO'
+    --JOIN   dwh_aggregation_energy_savings_node n ON n.siteid = s.siteid
+    --where  n.startday >= date_format(date_add('day',-2,current_date),'%Y-%m-%d')
+    --where  n.startday >= date_add('day',-2,current_date)
+    where  s.name = 'KCMO'
     ;;
   }
 
