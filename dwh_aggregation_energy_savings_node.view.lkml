@@ -1,7 +1,10 @@
 view: dwh_aggregation_energy_savings_node {
   derived_table: {
     sql:
-    select * from dwh_aggregation_energy_savings_node
+    select siteid,nodeid,aggregation_type,starttime,actual_energy_consumption,enddt,endtime,led_energy_consumption,legacy_energy_consumption,
+           savings_legacy_vs_actual,savings_legacy_vs_led,startdt,starthr,ts,startdt_utc,starthr_utc,enddt_utc,startday_utc,
+           date(startday) as startday
+    from   dwh_aggregation_energy_savings_node
     --where  startday >= date_format(date_add('day',-30,current_date),'%Y-%m-%d')
     ;;
   }
@@ -60,7 +63,7 @@ view: dwh_aggregation_energy_savings_node {
   }
 
   dimension: startday {
-    type: string
+    type: date
     sql: ${TABLE}.startday ;;
   }
 

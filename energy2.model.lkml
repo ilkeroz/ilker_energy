@@ -21,4 +21,9 @@ explore: dwh_aggregation_energy_savings_node {
 
 explore: dwh_site {}
 
-explore: dwh_node {}
+explore: dwh_node {
+  join: dwh_site {
+    sql_on: ${dwh_node.siteid} = ${dwh_site.siteid} ;;
+    relationship: many_to_one
+  }
+}
