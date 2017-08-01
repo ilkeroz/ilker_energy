@@ -1,13 +1,20 @@
 view: dwh_site {
+
+  # sql_table_name: {{ _user_attributes['platform'] }}.dwh_site ;;
+
   derived_table: {
-    sql:
-    select distinct s.* from dwh_site s
-    --JOIN   dwh_aggregation_energy_savings_node n ON n.siteid = s.siteid
-    --where  n.startday >= date_format(date_add('day',-2,current_date),'%Y-%m-%d')
-    --where  n.startday >= date_add('day',-2,current_date)
-    where  s.name = 'KCMO'
-    ;;
+   sql:
+   select distinct s.*
+   from   dwh_site s
+   --JOIN   dwh_aggregation_energy_savings_node n ON n.siteid = s.siteid
+   --where  n.startday >= date_format(date_add('day',-2,current_date),'%Y-%m-%d')
+   --where  n.startday >= date_add('day',-2,current_date)
+   where  s.name = '{{ _user_attributes['sitename'] }}'
+   or     '{{ _user_attributes['sitename'] }}' = 'all'
+   ;;
   }
+
+
 
   suggestions: yes
 
