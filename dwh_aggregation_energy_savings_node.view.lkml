@@ -7,6 +7,7 @@ view: dwh_aggregation_energy_savings_node {
     from   dwh_aggregation_energy_savings_node
     --where  startday >= date_format(date_add('day',-30,current_date),'%Y-%m-%d')
     ;;
+    sql_trigger_value: select date_format(current_timestamp,'%H') ;;
   }
 
   suggestions: yes
