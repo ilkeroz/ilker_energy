@@ -2,10 +2,10 @@ view: dwh_node {
   derived_table: {
     sql:
     select n.*, g.groupname as groupname, f.fixturetype as fixture_fixturetype
-    from   dwh_node n
-    LEFT OUTER JOIN   dwh_nodegroups g ON n.nodeid = g.nodeid
-    JOIN   dwh_energy_settings es ON n.nodeid = es.nodeid
-    JOIN   dwh_fixture f ON f.fixtureid = es.fixtureid
+    from   hive.{{ _user_attributes['energy_platform'] }}.dwh_node n
+    LEFT OUTER JOIN   hive.{{ _user_attributes['energy_platform'] }}.dwh_nodegroups g ON n.nodeid = g.nodeid
+    JOIN   hive.{{ _user_attributes['energy_platform'] }}.dwh_energy_settings es ON n.nodeid = es.nodeid
+    JOIN   hive.{{ _user_attributes['energy_platform'] }}.dwh_fixture f ON f.fixtureid = es.fixtureid
     --where  (g.grouptype = 'Lighting')
     ;;
     sql_trigger_value: select date_format(current_timestamp,'%H') ;;
