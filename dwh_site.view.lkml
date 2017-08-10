@@ -16,7 +16,6 @@ view: dwh_site {
   }
 
 
-
   suggestions: yes
 
   dimension: altitude {
