@@ -7,14 +7,14 @@ view: dwh_aggregation_energy_savings_node {
     from   hive.{{ _user_attributes['energy_platform'] }}.dwh_aggregation_energy_savings_node
     --where  startday >= date_format(date_add('day',-30,current_date),'%Y-%m-%d')
     ;;
-    sql_trigger_value: select date_format(current_timestamp,'%H') ;;
+    # sql_trigger_value: select date_format(current_timestamp,'%H') ;;
   }
 
   suggestions: yes
 
   dimension: actual_energy_consumption {
     type: number
-    sql: ${TABLE}.actual_energy_consumption ;;
+    sql: ${TABLE}.actual_energy_consumption/1000 ;;
   }
 
   dimension: aggregation_type {
@@ -34,12 +34,12 @@ view: dwh_aggregation_energy_savings_node {
 
   dimension: led_energy_consumption {
     type: number
-    sql: ${TABLE}.led_energy_consumption ;;
+    sql: ${TABLE}.led_energy_consumption/1000 ;;
   }
 
   dimension: legacy_energy_consumption {
     type: number
-    sql: ${TABLE}.legacy_energy_consumption ;;
+    sql: ${TABLE}.legacy_energy_consumption/1000 ;;
   }
 
   dimension: nodeid {

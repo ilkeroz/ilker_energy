@@ -12,7 +12,7 @@ view: dwh_site {
    where  s.name = '{{ _user_attributes['sitename'] }}'
    or     '{{ _user_attributes['sitename'] }}' = 'all'
    ;;
-  sql_trigger_value: select date_format(current_timestamp,'%H') ;;
+  # sql_trigger_value: select date_format(current_timestamp,'%H') ;;
   }
 
 

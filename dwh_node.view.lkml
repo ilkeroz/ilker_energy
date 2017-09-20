@@ -8,7 +8,7 @@ view: dwh_node {
     JOIN   hive.{{ _user_attributes['energy_platform'] }}.dwh_fixture f ON f.fixtureid = es.fixtureid
     --where  (g.grouptype = 'Lighting')
     ;;
-    sql_trigger_value: select date_format(current_timestamp,'%H') ;;
+    # sql_trigger_value: select date_format(current_timestamp,'%H') ;;
   }
 
   suggestions: yes
