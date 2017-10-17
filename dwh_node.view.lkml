@@ -6,7 +6,7 @@ view: dwh_node {
     LEFT OUTER JOIN   hive.{{ _user_attributes['energy_platform'] }}.dwh_nodegroups g ON n.nodeid = g.nodeid
     JOIN   hive.{{ _user_attributes['energy_platform'] }}.dwh_energy_settings es ON n.nodeid = es.nodeid
     JOIN   hive.{{ _user_attributes['energy_platform'] }}.dwh_fixture f ON f.fixtureid = es.fixtureid
-    --where  (g.grouptype = 'Lighting')
+    where  (g.grouptype = 'Lighting')
     ;;
     # sql_trigger_value: select date_format(current_timestamp,'%H') ;;
   }
