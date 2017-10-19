@@ -1,4 +1,4 @@
-connection: "netsense"
+connection: "netsense_prod"
 
 # include all the views
 include: "*.view"
