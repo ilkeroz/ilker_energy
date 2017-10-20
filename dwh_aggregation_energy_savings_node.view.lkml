@@ -110,8 +110,13 @@ view: dwh_aggregation_energy_savings_node {
     sql: ${actual_energy_consumption} ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
+  measure: savings_by_MaxLED_vs_legacy {
+    type: sum
+    sql: ${savings_legacy_vs_led} ;;
+  }
+
+  measure: savings_by_actual_vs_MaxLED {
+    type: sum
+    sql: ${savings_legacy_vs_actual} - ${savings_legacy_vs_led} ;;
   }
 }
