@@ -49,12 +49,12 @@ view: dwh_aggregation_energy_savings_node {
 
   dimension: savings_legacy_vs_actual {
     type: number
-    sql: ${TABLE}.savings_legacy_vs_actual ;;
+    sql: ${TABLE}.savings_legacy_vs_actual/1000 ;;
   }
 
   dimension: savings_legacy_vs_led {
     type: number
-    sql: ${TABLE}.savings_legacy_vs_led ;;
+    sql: ${TABLE}.savings_legacy_vs_led/1000 ;;
   }
 
   dimension: siteid {
