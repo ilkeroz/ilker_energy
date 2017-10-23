@@ -5,7 +5,7 @@ view: dwh_site {
   derived_table: {
    sql:
    select distinct s.*
-   from   hive.{{ _user_attributes['energy_platform'] }}.dwh_site s
+   from   hive.{{ _user_attributes['platform'] }}.dwh_site s
    --JOIN   dwh_aggregation_energy_savings_node n ON n.siteid = s.siteid
    --where  n.startday >= date_format(date_add('day',-2,current_date),'%Y-%m-%d')
    --where  n.startday >= date_add('day',-2,current_date)
