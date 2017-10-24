@@ -119,4 +119,9 @@ view: dwh_aggregation_energy_savings_node {
     type: sum
     sql: ${savings_legacy_vs_actual} - ${savings_legacy_vs_led} ;;
   }
+
+  measure: savings_total {
+    type: sum
+    sql: ${savings_legacy_vs_actual} ;;
+  }
 }
