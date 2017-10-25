@@ -162,12 +162,12 @@ view: dwh_aggregation_energy_savings_node {
 
   measure: sum_led_usage {
     type: sum
-    sql: ${led_usage} - ${actual_usage} ;;
+    sql: ${led_usage} ;;
   }
 
   measure: sum_legacy_usage {
     type: sum
-    sql: ${legacy_usage} - ${led_usage} - ${actual_usage} ;;
+    sql: ${legacy_usage} ;;
   }
 
 }
