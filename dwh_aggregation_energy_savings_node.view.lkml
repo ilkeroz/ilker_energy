@@ -3,6 +3,21 @@ view: dwh_aggregation_energy_savings_node {
     sql:
     select siteid,nodeid,aggregation_type,starttime,actual_energy_consumption,enddt,endtime,led_energy_consumption,legacy_energy_consumption,
            savings_legacy_vs_actual,savings_legacy_vs_led,startdt,starthr,ts,startdt_utc,starthr_utc,enddt_utc,startday_utc,
+           case
+                when aggregation_type = '15min' then 0.25 * actual_energy_consumption/1000
+                when aggregation_type = '1hr'   then 1.0  * actual_energy_consumption/1000
+                when aggregation_type = '1day'  then 24.0 * actual_energy_consumption/1000
+           end as actual_usage,
+           case
+                when aggregation_type = '15min' then 0.25 * led_energy_consumption/1000
+                when aggregation_type = '1hr'   then 1.0  * led_energy_consumption/1000
+                when aggregation_type = '1day'  then 24.0 * led_energy_consumption/1000
+           end as led_usage,
+           case
+                when aggregation_type = '15min' then 0.25 * legacy_energy_consumption/1000
+                when aggregation_type = '1hr'   then 1.0  * legacy_energy_consumption/1000
+                when aggregation_type = '1day'  then 24.0 * legacy_energy_consumption/1000
+           end as legacy_usage,
            date(startday) as startday
     from   hive.{{ _user_attributes['platform'] }}.dwh_aggregation_energy_savings_node
     --where  startday >= date_format(date_add('day',-30,current_date),'%Y-%m-%d')
@@ -11,6 +26,21 @@ view: dwh_aggregation_energy_savings_node {
   }
 
   suggestions: yes
+
+  dimension: actual_usage {
+    type: number
+    sql: ${TABLE}.actual_usage ;;
+  }
+
+  dimension: led_usage {
+    type: number
+    sql: ${TABLE}.led_usage ;;
+  }
+
+  dimension: legacy_usage {
+    type: number
+    sql: ${TABLE}.legacy_usage ;;
+  }
 
   dimension: actual_energy_consumption {
     type: number
@@ -124,4 +154,20 @@ view: dwh_aggregation_energy_savings_node {
     type: sum
     sql: ${savings_legacy_vs_actual} ;;
   }
+
+  measure: sum_actual_usage {
+    type: sum
+    sql: ${actual_usage} ;;
+  }
+
+  measure: sum_led_usage {
+    type: sum
+    sql: ${led_usage} - ${actual_usage} ;;
+  }
+
+  measure: sum_legacy_usage {
+    type: sum
+    sql: ${legacy_usage} - ${led_usage} ;;
+  }
+
 }
