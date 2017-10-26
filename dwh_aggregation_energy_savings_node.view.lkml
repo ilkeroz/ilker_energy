@@ -170,9 +170,4 @@ view: dwh_aggregation_energy_savings_node {
     sql: ${legacy_usage} - ${actual_usage} - (${led_usage} - ${actual_usage}) ;;
   }
 
-  measure: avg_actual_usage {
-    type: average
-    sql: ${actual_usage} ;;
-  }
-
 }
