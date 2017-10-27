@@ -18,6 +18,16 @@ explore: dwh_aggregation_energy_savings_node {
   }
 }
 
+explore: pernode_usage {
+  join: dwh_site {
+    sql_on: ${pernode_usage.siteid}=${dwh_site.siteid} ;;
+    relationship: many_to_one
+  }
+  join: dwh_node {
+    sql_on: ${pernode_usage.nodeid}=${dwh_node.nodeid} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: dwh_site {}
 
