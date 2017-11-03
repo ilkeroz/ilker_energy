@@ -158,6 +158,7 @@ view: dwh_aggregation_energy_savings_node {
   measure: sum_actual_usage {
     type: sum
     sql: greatest(${actual_usage},0) ;;
+    value_format: "#####0.## \" kWh\""
   }
 
   measure: sum_led_usage {
