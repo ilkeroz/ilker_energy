@@ -1,7 +1,7 @@
 view: dwh_node {
   derived_table: {
     sql:
-    select n.*, g.groupname as groupname, f.name as fixture_fixturetype
+    select n.*, g.groupname as groupname, f.name as fixture_fixturetype, es.fixtureid as es_fixtureid
     from   hive.{{ _user_attributes['platform'] }}.dwh_node n
     LEFT OUTER JOIN   hive.{{ _user_attributes['platform'] }}.dwh_nodegroups g ON n.nodeid = g.nodeid
     JOIN   hive.{{ _user_attributes['platform'] }}.dwh_energy_settings es ON n.nodeid = es.nodeid
