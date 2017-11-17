@@ -70,7 +70,7 @@ view: dwh_node {
 
   dimension: fixtureid {
     type: string
-    sql: ${TABLE}.fixtureid ;;
+    sql: ${TABLE}.es_fixtureid ;;
   }
 
   dimension: fixturename {
