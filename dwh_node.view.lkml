@@ -1,7 +1,7 @@
 view: dwh_node {
   derived_table: {
     sql:
-    select n.*, g.groupname as groupname, f.name as fixture_fixturetype, es.fixtureid as es_fixtureid
+    select n.*, f.name as fixture_fixturetype, es.fixtureid as es_fixtureid, g.groupid, g.groupname
     from   hive.{{ _user_attributes['platform'] }}.dwh_node n
     LEFT OUTER JOIN   hive.{{ _user_attributes['platform'] }}.dwh_nodegroups g ON n.nodeid = g.nodeid
     JOIN   hive.{{ _user_attributes['platform'] }}.dwh_energy_settings es ON n.nodeid = es.nodeid
@@ -155,12 +155,12 @@ view: dwh_node {
 
   dimension: scheduleid {
     type: string
-    sql: ${TABLE}.scheduleid ;;
+    sql: ${TABLE}.groupid ;;
   }
 
-  dimension: schedulename {
+  dimension: groupname {
     type: string
-    sql: ${TABLE}.schedulename ;;
+    sql: ${TABLE}.groupname ;;
   }
 
   dimension: serialnumber {
@@ -193,11 +193,6 @@ view: dwh_node {
     sql: ${TABLE}.time_zone ;;
   }
 
-  dimension: groupname {
-    type: string
-    sql: ${TABLE}.groupname ;;
-  }
-
   dimension: fixture_fixturetype {
     type: string
     sql: ${TABLE}.fixture_fixturetype ;;
@@ -205,6 +200,6 @@ view: dwh_node {
 
   measure: count {
     type: count
-    drill_fields: [fixturename, name, schedulename, pdprofilename]
+    drill_fields: [fixturename, name, pdprofilename]
   }
 }
