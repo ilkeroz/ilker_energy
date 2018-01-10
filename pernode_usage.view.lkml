@@ -13,7 +13,7 @@ view: pernode_usage {
     from   hive.{{ _user_attributes['platform'] }}.dwh_aggregation_energy_savings_node
     group  by siteid, nodeid, aggregation_type, startday
     ;;
-    sql_trigger_value: select date_format(current_timestamp,'%H') ;;
+    ##sql_trigger_value: select date_format(current_timestamp,'%H') ;;
     }
 
     suggestions: yes
