@@ -100,7 +100,7 @@ view: dwh_aggregation_energy_savings_node {
 
   dimension: startdt {
     type: string
-    sql: ${TABLE}.startdt ;;
+    sql: substr(${TABLE}.startdt,6) ;;
   }
 
   dimension: starthr {
