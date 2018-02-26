@@ -103,6 +103,12 @@ view: dwh_aggregation_energy_savings_node {
     sql: concat(substr(${TABLE}.startdt,6,2), '/', substr(${TABLE}.startdt,9,2), ' ', substr(${TABLE}.startdt,11,6)) ;;
   }
 
+  dimension: myts {
+    type: string
+    sql: concat(substr( ${startdt} ,6,2), '/', substr(${startdt},9,2), ' ', substr(${startdt},11,6) )     ;;
+    label: "Timestamp"
+  }
+
   dimension: starthr {
     type: string
     sql: ${TABLE}.starthr ;;
