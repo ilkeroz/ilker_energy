@@ -1,4 +1,4 @@
-connection: "netsense"
+connection: "presto-scale"
 
 # include all the views
 include: "*.view"
