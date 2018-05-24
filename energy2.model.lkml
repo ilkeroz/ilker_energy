@@ -1,4 +1,4 @@
-connection: "presto-scale"
+connection: "scale"
 
 # include all the views
 include: "*.view"
