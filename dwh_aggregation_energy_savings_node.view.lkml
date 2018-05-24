@@ -100,7 +100,11 @@ view: dwh_aggregation_energy_savings_node {
 
   dimension: startdt {
     type: string
+<<<<<<< HEAD
     sql: ${TABLE}.startdt ;;
+=======
+    sql: ${TABLE}.startdt;;
+>>>>>>> branch 'dev-ilker-ozsaracoglu-xyj4' of git@lkrgit_github_f44af7f4444521b5df93af6208bdf09b7a49a057:ilkeroz/ilker_energy.git
   }
 
   dimension: myts {
