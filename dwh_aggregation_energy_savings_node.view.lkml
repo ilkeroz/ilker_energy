@@ -6,16 +6,19 @@ view: dwh_aggregation_energy_savings_node {
            case
                 when aggregation_type = '15min' then 0.25 * actual_energy_consumption/1000
                 when aggregation_type = '1hr'   then 1.0  * actual_energy_consumption/1000
+                when aggregation_type = '4hr'   then 4.0  * actual_energy_consumption/1000
                 when aggregation_type = '1day'  then 24.0 * actual_energy_consumption/1000
            end as actual_usage,
            case
                 when aggregation_type = '15min' then 0.25 * led_energy_consumption/1000
                 when aggregation_type = '1hr'   then 1.0  * led_energy_consumption/1000
+                when aggregation_type = '4hr'   then 4.0  * led_energy_consumption/1000
                 when aggregation_type = '1day'  then 24.0 * led_energy_consumption/1000
            end as led_usage,
            case
                 when aggregation_type = '15min' then 0.25 * legacy_energy_consumption/1000
                 when aggregation_type = '1hr'   then 1.0  * legacy_energy_consumption/1000
+                when aggregation_type = '4hr'   then 4.0  * legacy_energy_consumption/1000
                 when aggregation_type = '1day'  then 24.0 * legacy_energy_consumption/1000
            end as legacy_usage,
            date(startday) as startday
