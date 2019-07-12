@@ -6,6 +6,7 @@ view: pernode_usage {
           case
                 when aggregation_type = '15min' then 0.25 * actual_energy_consumption/1000
                 when aggregation_type = '1hr'   then 1.0  * actual_energy_consumption/1000
+                when aggregation_type = '4hr'   then 4.0  * actual_energy_consumption/1000
                 when aggregation_type = '1day'  then 24.0 * actual_energy_consumption/1000
            end
            ) as actual_node_day_usage,
