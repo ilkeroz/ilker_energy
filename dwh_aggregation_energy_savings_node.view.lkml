@@ -23,7 +23,7 @@ view: dwh_aggregation_energy_savings_node {
            end as legacy_usage,
            date(startday) as startday
     from   hive.{{ _user_attributes['platform'] }}.dwh_aggregation_energy_savings_node
-    --where  startday >= date_format(date_add('day',-30,current_date),'%Y-%m-%d')
+    where  startday >= date_format(date_add('day',-30,current_date),'%Y-%m-%d')
     ;;
     ##sql_trigger_value: select date_format(current_timestamp,'%H') ;;
   }
@@ -103,7 +103,7 @@ view: dwh_aggregation_energy_savings_node {
 
   dimension: startdt {
     type: string
-    sql: ${TABLE}.startdt;;
+    sql: ${TABLE}.startdt ;;
   }
 
   dimension: myts {
